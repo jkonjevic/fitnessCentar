@@ -15,7 +15,7 @@ public class FitnesCentar implements Serializable {
     private String naziv;
 
     @Column(unique = true,nullable = false)
-    private String Adresa;
+    private String adresa;
 
     @Column
     private String brCentrale;
@@ -41,11 +41,11 @@ public class FitnesCentar implements Serializable {
     }
 
     public String getAdresa() {
-        return Adresa;
+        return adresa;
     }
 
     public void setAdresa(String adresa) {
-        Adresa = adresa;
+        this.adresa = adresa;
     }
 
     public String getBrCentrale() {
@@ -80,14 +80,13 @@ public class FitnesCentar implements Serializable {
         this.listaTrenera = listaTrenera;
     }
 
-    public FitnesCentar(Long id, String naziv, String adresa, String brCentrale, String email, Set<Sala> listaSala, Set<Korisnik> listaTrenera) {
+    public FitnesCentar(Long id, String naziv, String adresa, String brCentrale, String email) {
         this.id = id;
         this.naziv = naziv;
-        Adresa = adresa;
+        this.adresa = adresa;
         this.brCentrale = brCentrale;
         this.email = email;
-        this.listaSala = listaSala;
-        this.listaTrenera = listaTrenera;
+
     }
 
     public FitnesCentar(){}
