@@ -43,7 +43,8 @@ body {
     padding: 15px 10px;
     border: 0;
     outline: none;
-    border-radius: 5px;
+    border-radius: 55px;
+    background-color: rgb(51, 80, 117);
 
 }
 

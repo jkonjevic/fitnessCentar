@@ -1,4 +1,6 @@
-package com.example.fitnessCentar.entities;
+package com.example.fitnessCentar.entities.dto;
+
+import com.example.fitnessCentar.entities.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,39 +8,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@Entity
-public class Korisnik implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class KorisnikDto {
+
+
     private Long id;
-
-    @Column(unique = true, nullable = false)
     private String korisnickoIme;
-
-    @Column(nullable = false)
     private String prezime;
-
-    @Column(nullable = false)
     private String lozinka;
-
-    @Column(nullable = false)
     private String ime;
-
-    @Column
     private  String kontakt;
-
-    @Column(unique = true, nullable = false)
     private String email;
-
-    @Column
     private String datum;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
     private Uloga uloga;
-
-    @Column(nullable = false)
     boolean aktivan;
+
 
     public boolean isAktivan() {
         return aktivan;
@@ -120,32 +103,6 @@ public class Korisnik implements Serializable {
         this.kontakt = kontakt;
     }
 
-    public Set<Trening> getTrenerRaspored() {
-        return trenerRaspored;
-    }
-
-    public void setTrenerRaspored(Set<Trening> trenerRaspored) {
-        this.trenerRaspored = trenerRaspored;
-    }
-
-    public Set<Ocijena> getKorisnikOcjene() {
-        return korisnikOcjene;
-    }
-
-    public void setKorisnikOcjene(Set<Ocijena> korisnikOcjene) {
-        this.korisnikOcjene = korisnikOcjene;
-    }
-
-    public FitnesCentar getFitnesCentar() {
-        return fitnesCentar;
-    }
-
-    public void setFitnesCentar(FitnesCentar fitnesCentar) {
-        this.fitnesCentar = fitnesCentar;
-    }
-
-
-
     public String getPrezime() {
         return prezime;
     }
@@ -154,7 +111,11 @@ public class Korisnik implements Serializable {
         this.prezime = prezime;
     }
 
-    public Korisnik(Long id, String korisnickoIme, String prezime, String lozinka, String ime, String kontakt, String email, String datum, Uloga uloga, boolean aktivan) {
+    public boolean getAktivan(boolean aktivan){
+        return aktivan;
+    }
+
+    public KorisnikDto(Long id, String korisnickoIme, String prezime, String lozinka, String ime, String kontakt, String email, String datum,Uloga uloga, boolean aktivan) {
         this.id = id;
         this.korisnickoIme = korisnickoIme;
         this.prezime = prezime;
@@ -168,22 +129,9 @@ public class Korisnik implements Serializable {
 
     }
 
-    public Korisnik() {
+    public KorisnikDto() {
     }
 
-    @OneToMany(mappedBy = "trener",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Trening> trenerRaspored = new HashSet<>();
 
-    @OneToMany(mappedBy = "korisnik",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Ocijena> korisnikOcjene = new HashSet<>();
-
-    @ManyToOne
-    private FitnesCentar fitnesCentar;
-
-    @ManyToMany
-    @JoinTable(name = "prijavljeni",
-            joinColumns = @JoinColumn(name="korisnik_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "termin_id", referencedColumnName = "id"))
-    private Set<Termin> prijave = new HashSet<>();
 
 }

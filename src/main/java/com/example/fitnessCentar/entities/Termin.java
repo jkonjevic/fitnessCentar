@@ -18,6 +18,9 @@ public class Termin {
     @Column
     private double cijena;
 
+    @Column
+    private int brPrijavljenih;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Sala sala;
 
@@ -26,6 +29,9 @@ public class Termin {
 
     @OneToMany(mappedBy = "termin", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Ocijena> ocijene = new HashSet<>();
+
+    @ManyToMany(mappedBy = "prijave")
+    private Set<Korisnik> prijavljeniClanovi = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -75,10 +81,19 @@ public class Termin {
         this.ocijene = ocijene;
     }
 
-    public Termin(Long id, Date pocetak, double cijena, Sala sala, Trening trening, Set<Ocijena> ocijene) {
+    public int getBrPrijavljenih() {
+        return brPrijavljenih;
+    }
+
+    public void setBrPrijavljenih(int brPrijavljenih) {
+        this.brPrijavljenih = brPrijavljenih;
+    }
+
+    public Termin(Long id, Date pocetak, double cijena, int brPrijavljenih, Sala sala, Trening trening, Set<Ocijena> ocijene) {
         this.id = id;
         this.pocetak = pocetak;
         this.cijena = cijena;
+        this.brPrijavljenih = brPrijavljenih;
         this.sala = sala;
         this.trening = trening;
         this.ocijene = ocijene;
