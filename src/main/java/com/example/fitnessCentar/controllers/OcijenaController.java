@@ -21,8 +21,8 @@ public class OcijenaController {
 
     @Autowired
     private OcijenaService ocijenaService;
-/*
-    @GetMapping(value ="/", produces = MediaType.APPLICATION_JSON_VALUE)
+
+ /*   @GetMapping(value ="/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<OcijenaDto>> getAllOcijena(){
         List<Ocijena> listaOcijena = ocijenaService.findAll();
         List<OcijenaDto> listaOcijenaDto = new ArrayList<>();
@@ -30,13 +30,14 @@ public class OcijenaController {
         for(Ocijena ocijena: listaOcijena){
             OcijenaDto ocijenaDto = new OcijenaDto(
                     ocijena.getId(),
-                    ocijena.getOcijena(),
-                    ocijena.getKorisnik()
+                   ocijena.getKorisnik(),
+                   ocijena.getTermin(),
+                    ocijena.getOcijena()
             );
             listaOcijenaDto.add(ocijenaDto);
         }
 
         return new ResponseEntity<>(listaOcijenaDto, HttpStatus.OK);
-    }
-    */
+    } */
+
 }

@@ -183,7 +183,7 @@ public class KorisnikController {
         return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(value ="/korisnici/{id}/Ocijena", produces = MediaType.APPLICATION_JSON_VALUE)
+  /*  @GetMapping(value ="/korisnici/{id}/Ocijena", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OcijenaDto> getOcijena(@PathVariable Long id){
         Optional<Korisnik> k1 = korisnikService.findOne(id);
         if(!k1.isPresent()){
@@ -197,7 +197,7 @@ public class KorisnikController {
 
         );
         return new ResponseEntity<>(ocijenaDto, HttpStatus.OK);
-    }
+    }*/
 }
 
 // IMA JOS DA SE PISE

@@ -10,29 +10,50 @@ import java.util.Set;
 
 public class OcijenaDto {
 
-    private String korisnickoIme;
-    private Set<Ocijena> listaOcijena = new HashSet<>();
+    private Long id;
+    private KorisnikDto korisnik;
+    private TerminDto termin;
+    private int ocijena;
 
-    public String getKorisnickoIme() {
-        return korisnickoIme;
+    public OcijenaDto(Long id, KorisnikDto korisnik, TerminDto termin, int ocijena) {
+        this.id = id;
+        this.korisnik = korisnik;
+        this.termin = termin;
+        this.ocijena = ocijena;
     }
 
-    public void setKorisnickoIme(String korisnickoIme) {
-        this.korisnickoIme = korisnickoIme;
+    public Long getId() {
+        return id;
     }
 
-    public Set<Ocijena> getListaOcijena() {
-        return listaOcijena;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setListaOcijena(Set<Ocijena> listaOcijena) {
-        this.listaOcijena = listaOcijena;
+    public KorisnikDto getKorisnik() {
+        return korisnik;
     }
 
-    public OcijenaDto(String korisnickoIme, Set<Ocijena> listaOcijena) {
-        this.korisnickoIme = korisnickoIme;
-        this.listaOcijena = listaOcijena;
+    public void setKorisnik(KorisnikDto korisnik) {
+        this.korisnik = korisnik;
+    }
+
+    public TerminDto getTermin() {
+        return termin;
+    }
+
+    public void setTermin(TerminDto termin) {
+        this.termin = termin;
+    }
+
+    public int getOcijena() {
+        return ocijena;
+    }
+
+    public void setOcijena(int ocijena) {
+        this.ocijena = ocijena;
     }
     public OcijenaDto(){}
+
 }
 
