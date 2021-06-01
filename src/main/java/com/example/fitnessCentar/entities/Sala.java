@@ -42,28 +42,12 @@ public class Sala implements Serializable {
     }
 
 
-    public FitnesCentar getFitnesCentar() {
-        return fitnesCentar;
-    }
 
-    public void setFitnesCentar(FitnesCentar fitnesCentar) {
-        this.fitnesCentar = fitnesCentar;
-    }
-
-    public Set<Termin> getTermini() {
-        return termini;
-    }
-
-    public void setTermini(Set<Termin> termini) {
-        this.termini = termini;
-    }
-
-    public Sala(Long id, Integer kapacitet, Integer oznaka, FitnesCentar fitnesCentar, Set<Termin> termini) {
+    public Sala(Long id, Integer kapacitet, Integer oznaka) {
         this.id = id;
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
-        this.fitnesCentar = fitnesCentar;
-        this.termini = termini;
+;
     }
 
     public Sala(){}

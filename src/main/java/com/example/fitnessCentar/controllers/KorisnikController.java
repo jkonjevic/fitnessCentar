@@ -5,6 +5,7 @@ import com.example.fitnessCentar.entities.Korisnik;
 import com.example.fitnessCentar.entities.Uloga;
 import com.example.fitnessCentar.entities.dto.FitnesCentarDto;
 import com.example.fitnessCentar.entities.dto.KorisnikDto;
+import com.example.fitnessCentar.entities.dto.OcijenaDto;
 import com.example.fitnessCentar.entities.dto.prijavaDto;
 import com.example.fitnessCentar.services.FitnesCentarService;
 import com.example.fitnessCentar.services.KorisnikService;
@@ -180,6 +181,22 @@ public class KorisnikController {
     public ResponseEntity deleteKorisnik(@PathVariable Long id){
         korisnikService.delete(id);
         return new ResponseEntity(HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping(value ="/korisnici/{id}/Ocijena", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<OcijenaDto> getOcijena(@PathVariable Long id){
+        Optional<Korisnik> k1 = korisnikService.findOne(id);
+        if(!k1.isPresent()){
+
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Korisnik korisnik = k1.get();
+        OcijenaDto ocijenaDto = new OcijenaDto(
+                korisnik.getKorisnickoIme(),
+                korisnik.getKorisnikOcjene()
+
+        );
+        return new ResponseEntity<>(ocijenaDto, HttpStatus.OK);
     }
 }
 

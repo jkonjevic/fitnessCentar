@@ -7,8 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-enum tipTreninga{CROSSFIT, GYM, GLADIATOR}
-
 @Entity
 public class Trening implements Serializable {
 
@@ -86,14 +84,13 @@ public class Trening implements Serializable {
         this.termini = termini;
     }
 
-    public Trening(Long id, String naziv, String opis, tipTreninga tip, int trajanje, double cijena, String pocetak, Set<Termin> termini, Korisnik trener) {
+    public Trening(Long id, String naziv, String opis, tipTreninga tip, int trajanje) {
         this.id = id;
         this.naziv = naziv;
         this.opis = opis;
         this.tip = tip;
         this.trajanje = trajanje;
-        this.termini = termini;
-        this.trener = trener;
+
     }
 
     public Trening(){}
