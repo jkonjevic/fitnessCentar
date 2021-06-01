@@ -71,7 +71,7 @@ public class FitnesCentarController {
         return new ResponseEntity<>(f1, HttpStatus.CREATED);
     }
 
-    @PutMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value="/updateFitnesCentar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FitnesCentarDto> putFitnesCentar(@PathVariable Long id, @Validated @RequestBody FitnesCentarDto f1){
         Optional<FitnesCentar> f2 = fitnesCentarService.findOne(id);
         if(!f2.isPresent()){
