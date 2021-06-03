@@ -1,0 +1,37 @@
+.table {
+    margin: 10px 0px 40px 40px;
+    position: absolute;
+    border-width: 100px;
+    border-color: black;
+    background-color: deepskyblue;
+    width: 70%;
+}
+
+body {
+   
+    background: url('../images/bg.jpg') no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: sans-serif;
+    font-size: 40px;
+    color: #fff;
+    margin: 20px;
+    margin-left: 50px;
+}
+
+h5 {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: lightgray;
+    font-size: 10px;
+    margin-left: 65%;
+}
+.btn {
+    background-color:deepskyblue;
+    color: #fff; 
+    margin: 250px 250px 0px 470px;
+    font-size: 23px;
+    border-color: rgb(83, 76, 76);
+    border-width: 2px;
+}
