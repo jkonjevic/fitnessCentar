@@ -26,6 +26,15 @@ public class OcijenaService {
         return ocijenaRepository.findById(id);
     }
 
+  /*  public int findAllById(Long id){
+        List<Ocijena> ocijene = this.ocijenaRepository.findAllById(id);
+        if(ocijene.isEmpty())
+            return -1;
+        for (Ocijena ocijena: ocijene)
+              { return ocijena.getKorisnik();
+
+        }
+    }*/
 
     public Ocijena addOcijena(Ocijena o1){
         return ocijenaRepository.save(o1);

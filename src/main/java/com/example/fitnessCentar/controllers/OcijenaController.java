@@ -20,32 +20,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/Ocijena")
+@RequestMapping(value = "/api")
 public class OcijenaController {
 
     @Autowired
     private OcijenaService ocijenaService;
 
- /* @GetMapping(value ="/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<OcijenaDto>> getAllOcijena(){
+  @GetMapping(value ="/korisnikOcijene", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<OcijenaDto>> getAllOcijena(OcijenaDto ocijenaDto){
         List<Ocijena> listaOcijena = ocijenaService.findAll();
         List<OcijenaDto> listaOcijenaDto = new ArrayList<>();
 
-
-
         for(Ocijena ocijena: listaOcijena){
-            KorisnikDto korisnikDto = new KorisnikDto(ocijena.getKorisnik().getId(),ocijena.getKorisnik().getKorisnickoIme(),ocijena.getKorisnik().getPrezime(),ocijena.getKorisnik().getLozinka(),ocijena.getKorisnik().getIme(),ocijena.getKorisnik().getKontakt(), ocijena.getKorisnik().getEmail(),ocijena.getKorisnik().getDatum(),ocijena.getKorisnik().getUloga(),ocijena.getKorisnik().isAktivan());
-            TerminDto terminDto = new TerminDto(ocijena.getTermin().getId(),ocijena.getTermin().getPocetak(),ocijena.getTermin().getCijena(),ocijena.getTermin().getBrPrijavljenih(), ocijena.getTermin().getSala(), ocijena.getTermin().getTrening());
-            OcijenaDto ocijenaDto = new OcijenaDto(
-                    ocijena.getId(),
-                    korisnikDto,
-                    terminDto,
-                    ocijena.getOcijena()
-            );
+            String tempKorisnickoime = ocijena.getKorisnik().getKorisnickoIme();
+            System.out.println(ocijena.getTermin().getTrening().getTrener().getPrezime());
+            if(tempKorisnickoime == ocijenaDto.getKorisnickoIme()){
+
+                OcijenaDto newOcijenaDto = new OcijenaDto(
+                        ocijena.getTermin().getPocetak(),
+                        ocijena.getTermin().getTrening().getNaziv(),
+                        ocijena.getKorisnik().getKorisnickoIme(),
+                        ocijena.getOcijena(),
+                        ocijena.getTermin().getTrening().getTrener().getIme(),
+                        ocijena.getTermin().getTrening().getTrener().getPrezime(),
+                        ocijena.getTermin().getTrening().getTip()
+                );
+            }
             listaOcijenaDto.add(ocijenaDto);
         }
-
         return new ResponseEntity<>(listaOcijenaDto, HttpStatus.OK);
-    }*/
+    }
 
 }
