@@ -43,5 +43,10 @@ public class PageController {
     public String addTrening(){
         return "addTrening.html";
     }
+
+    @GetMapping(value="/sviTermini")
+    public String sviTermini(){
+        return "sviTermini.html";
+    }
     
 }

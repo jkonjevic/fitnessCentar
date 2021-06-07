@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/api/termini", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TerminController {
@@ -23,7 +24,7 @@ public class TerminController {
     @Autowired
     private TerminService terminService;
 
-    @GetMapping(value ="/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TerminDto>> getAllTermini(){
         List<Termin> listaTermina = terminService.findAll();
         List<TerminDto> listaTerminaDto = new ArrayList<>();
