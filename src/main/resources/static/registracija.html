@@ -6,30 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitnes Centar| Registration</title>
     <link rel="stylesheet" type="text/css" href="css/registracija.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/registracija.js"></script>
 </head>
 <body>
-    <div class = "registration-form">
+    <div class = "registration-form" id = "registracija">
         <h1>Registration form</h1>
         <form action="#" method="post">
             <p>First Name: </p>
-            <input type="text" name="fname" placeholder="First name" required>
+            <input type="text" name="fname" placeholder="First name" id ="ime" required>
             <p>Last Name: </p>
-            <input type="text" name="lname" placeholder="Last name" required>
+            <input type="text" name="lname" placeholder="Last name" id="prezime" required>
             <p>User Name: </p>
-            <input type="text" name="username" placeholder="User name" required>
+            <input type="text" name="username" placeholder="User name" id="korisnickoIme" required>
             <p>Email: </p>
-            <input type="email" name="email" placeholder="Email" required>
+            <input type="email" name="email" placeholder="Email" id="email" required>
             <p>Password: </p>
-            <input type="password" name="password" placeholder="password" required>
+            <input type="password" name="password" placeholder="password" id="lozinka" required>
             <p>Phone Number: </p>
-            <input type="tel" name="phone" placeholder="Phone number" required>
+            <input type="tel" name="phone" placeholder="Phone number" id="kontakt" required>
             <p>Date of birth: </p>
-            <input type="date" name="birthdate" placeholder="Date of birth" required>
+            <input type="date" name="birthdate" placeholder="Date of birth" id="datum" required>
             <div class="checkbox-group"> 
                 <span>COACH </span>
-                <input class="inline-checkbox" type="checkbox" name="Role" placeholder="role" required>
+                <input class="inline-checkbox" type="checkbox" name="Role" placeholder="role" id="uloga" >
             </div>
-            <button type="submit">Registration</button>
+            <button type="submit" id="dugmeRegistruj">Registration</button>
         </form>
     </div>
 </body>

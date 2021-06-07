@@ -58,6 +58,34 @@ body {
     background-color: deepskyblue;
     color: #fff;
 }
+#dugme2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 10px 15px;
+    width: 10%;
+    border-radius: 5px;
+    border: 0;
+    background-color: deepskyblue;
+    color: #fff;
+}
+#dugme2:hover {
+    background-color: rgb(87, 212, 250);
+    color: black;
+    font-weight: bold;
+}
+#text-register {
+    font-family: sans-serif;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: medium
+
+}
 
 .login-form button:hover {
     background-color: rgb(87, 212, 250);

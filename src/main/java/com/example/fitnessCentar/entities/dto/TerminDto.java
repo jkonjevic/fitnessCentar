@@ -1,9 +1,6 @@
 package com.example.fitnessCentar.entities.dto;
 
-import com.example.fitnessCentar.entities.Korisnik;
-import com.example.fitnessCentar.entities.Ocijena;
-import com.example.fitnessCentar.entities.Sala;
-import com.example.fitnessCentar.entities.Trening;
+import com.example.fitnessCentar.entities.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,8 +13,9 @@ public class TerminDto {
     private Date pocetak;
     private double cijena;
     private int brPrijavljenih;
-    private SalaDto sala;
-    private TreningDto trening;
+    private int oznaka;
+    private tipTreninga tip;
+    private String naziv;
 
     public Long getId() {
         return id;
@@ -43,23 +41,6 @@ public class TerminDto {
         this.cijena = cijena;
     }
 
-    public SalaDto getSala() {
-        return sala;
-    }
-
-    public void setSala(SalaDto sala) {
-        this.sala = sala;
-    }
-
-    public TreningDto getTrening() {
-        return trening;
-    }
-
-    public void setTrening(TreningDto trening) {
-        this.trening = trening;
-    }
-
-
     public int getBrPrijavljenih() {
         return brPrijavljenih;
     }
@@ -68,13 +49,39 @@ public class TerminDto {
         this.brPrijavljenih = brPrijavljenih;
     }
 
-    public TerminDto(Long id, Date pocetak, double cijena, int brPrijavljenih, SalaDto sala, TreningDto trening) {
+    public int getOznaka() {
+        return oznaka;
+    }
+
+    public void setOznaka(int oznaka) {
+        this.oznaka = oznaka;
+    }
+
+    public tipTreninga getTip() {
+        return tip;
+    }
+
+    public void setTip(tipTreninga tip) {
+        this.tip = tip;
+    }
+
+    public String getNaziv() {
+        return naziv;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
+
+    public TerminDto(Long id, Date pocetak, double cijena, int brPrijavljenih, int oznaka, tipTreninga tip, String naziv) {
         this.id = id;
         this.pocetak = pocetak;
         this.cijena = cijena;
         this.brPrijavljenih = brPrijavljenih;
-        this.sala = sala;
-        this.trening = trening;
+        this.oznaka = oznaka;
+        this.tip = tip;
+        this.naziv = naziv;
     }
+
     public TerminDto(){}
 }

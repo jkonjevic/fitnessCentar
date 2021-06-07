@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/api/fitnesCentar")
 public class FitnesCentarController {
@@ -56,7 +57,7 @@ public class FitnesCentarController {
         );
         return new ResponseEntity<>(centarDto, HttpStatus.OK);
     }
-    @PostMapping( produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FitnesCentarDto> postFitnesCentar(@Validated @RequestBody FitnesCentarDto f1){
 
         FitnesCentar centar = new FitnesCentar(
