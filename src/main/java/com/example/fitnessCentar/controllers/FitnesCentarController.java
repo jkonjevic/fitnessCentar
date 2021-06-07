@@ -22,7 +22,7 @@ public class FitnesCentarController {
     @Autowired
     private FitnesCentarService fitnesCentarService;
 
-    @GetMapping(value ="/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<FitnesCentarDto>> getAllFitnesCentar(){
         List<FitnesCentar> listaCentara = fitnesCentarService.findAll();
         List<FitnesCentarDto> listaCentaraDto = new ArrayList<>();

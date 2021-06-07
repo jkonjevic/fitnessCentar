@@ -12,7 +12,6 @@ public class TerminDto {
     private Long id;
     private Date pocetak;
     private double cijena;
-    private int brPrijavljenih;
     private int oznaka;
     private tipTreninga tip;
     private String naziv;
@@ -41,13 +40,6 @@ public class TerminDto {
         this.cijena = cijena;
     }
 
-    public int getBrPrijavljenih() {
-        return brPrijavljenih;
-    }
-
-    public void setBrPrijavljenih(int brPrijavljenih) {
-        this.brPrijavljenih = brPrijavljenih;
-    }
 
     public int getOznaka() {
         return oznaka;
@@ -73,11 +65,11 @@ public class TerminDto {
         this.naziv = naziv;
     }
 
-    public TerminDto(Long id, Date pocetak, double cijena, int brPrijavljenih, int oznaka, tipTreninga tip, String naziv) {
+    public TerminDto(Long id, Date pocetak, double cijena, int oznaka, tipTreninga tip, String naziv) {
         this.id = id;
         this.pocetak = pocetak;
         this.cijena = cijena;
-        this.brPrijavljenih = brPrijavljenih;
+
         this.oznaka = oznaka;
         this.tip = tip;
         this.naziv = naziv;

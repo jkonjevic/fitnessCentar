@@ -4,7 +4,8 @@ $(document).ready(function () {
         url: "http://localhost:8080/api/treneri",                 
         dataType: "json",                                           
         success: function (response) {                              
-            console.log("SUCCESS:\n", response);                    
+            console.log("SUCCESS:\n", response);
+            console.log(response);
 
             for (let korisnik of response) {                        
                 let row = "<tr>";                                   
@@ -15,7 +16,7 @@ $(document).ready(function () {
                 row += "<td>" + korisnik.email + "</td>";
                 row += "<td>" + korisnik.kontakt + "</td>";
                 row += "<td>" + korisnik.datum + "</td>";
-                row+="<td><input type = 'checkbox' /> </td>"
+                row+="<td><input type = 'checkbox' data-id='"+korisnik.id+"' /> </td>"
                 row += "</tr>";                                     
 
                 $('#korisnici').append(row);                        
@@ -25,6 +26,25 @@ $(document).ready(function () {
             console.log("ERROR:\n", response);
         }
     });
+$("#submitDugme").on("click", function(event){
+    event.preventDefault();
+    let ids = []
+    $("[type='checkbox']").each(function(elem){
+        console.log(this)
+        if($(this).is(":checked")){
+            ids.push($(this).attr("data-id"));
+            window.location.href = "admin_accept.html";
+        }
+    })
+    $.ajax({
+        type: "PUT",
+        url: "http://localhost:8080/api/odobriTrenera",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(ids)
+    });
+    })
+
 });
 
 

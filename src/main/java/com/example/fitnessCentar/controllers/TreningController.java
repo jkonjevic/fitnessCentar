@@ -17,13 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/api/trening", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TreningController {
     @Autowired
     private TreningService treningService;
 
-    @GetMapping(value ="/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TreningDto>> getAllTrening(){
         List<Trening> listaTreninga = treningService.findAll();
         List<TreningDto> listaTreningDto = new ArrayList<>();

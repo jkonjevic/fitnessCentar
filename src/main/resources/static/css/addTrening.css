@@ -1,0 +1,73 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('../images/bg.jpg') no-repeat;
+    background-size: cover;
+    color: #fff;
+
+}
+
+.TreningForm {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    padding: 16px 32px;
+
+    backdrop-filter: blur(35px);
+}
+
+.TreningForm h1 {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 20px 0px 0px 0px;
+    color:#fff;
+
+}
+
+.TreningForm p{
+    font-size: 15px;
+    margin: 5px 0;
+
+}
+
+
+.TreningForm input {
+    font-size: 16px;
+    padding: 10px 10px;
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+
+}
+
+.TreningForm button {
+    font-size: 18px;
+    font-weight: bold;
+    margin:20px 0px 0px 80px;
+    padding: 10px 15px;
+    width: 160px;
+    border: 0;
+    border-radius: 5px;
+    background-color: deepskyblue;
+    color: #fff;
+
+}
+
+.TreningForm button:hover {
+    background-color:rgb(86, 211, 253);
+    position: center;
+    color: black;
+    font-weight: bold;
+}
+
+
+
+

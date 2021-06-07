@@ -27,7 +27,7 @@ $(document).on("submit", "#registracija", function (event) {
             console.log(response);
 
             alert("FitnesCentar" + response.id + " je uspešno kreiran!");
-            window.location.href = "login.html";
+            window.location.href = "sviFitnesCentri.html";
         },
         error: function () {
             alert("Greška prilikom kreiranja fitnes centra!");

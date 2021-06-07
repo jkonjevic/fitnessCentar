@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api")
@@ -27,10 +28,10 @@ public class KorisnikController {
     @Autowired
     private KorisnikService korisnikService;
 
-    @GetMapping(value ="/korisnici/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<KorisnikDto> getKorisnik(@PathVariable Long id){
+    @GetMapping(value = "/korisnici/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<KorisnikDto> getKorisnik(@PathVariable Long id) {
         Optional<Korisnik> k1 = korisnikService.findOne(id);
-        if(!k1.isPresent()){
+        if (!k1.isPresent()) {
 
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -50,19 +51,67 @@ public class KorisnikController {
         return new ResponseEntity<>(korisnikDto, HttpStatus.OK);
     }
 
-        @PostMapping(value = "/registration", produces = MediaType.APPLICATION_JSON_VALUE)
-        public ResponseEntity<KorisnikDto> registration(@RequestBody KorisnikDto k1){
-            Korisnik korisnik = korisnikService.registracija(k1);
-            k1.setId(korisnik.getId());
-            return new ResponseEntity<>(k1, HttpStatus.CREATED);
+    @PostMapping(value = "/registration", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<KorisnikDto> registration(@RequestBody KorisnikDto k1) {
+        Korisnik korisnik = korisnikService.registracija(k1);
+        k1.setId(korisnik.getId());
+        return new ResponseEntity<>(k1, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<KorisnikDto> login(@RequestBody prijavaDto k1) {
+        Korisnik korisnik = korisnikService.prijava(k1);
+        if (korisnik == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        KorisnikDto korisnikDto = new KorisnikDto(
+                korisnik.getId(),
+                korisnik.getKorisnickoIme(),
+                korisnik.getPrezime(),
+                korisnik.getLozinka(),
+                korisnik.getIme(),
+                korisnik.getKontakt(),
+                korisnik.getEmail(),
+                korisnik.getDatum(),
+                korisnik.getUloga(),
+                korisnik.isAktivan()
+        );
+        return new ResponseEntity<>(korisnikDto, HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/treneri", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<KorisnikDto>> getAllTrener() {
+        List<Korisnik> listaKorisnika = korisnikService.findAll();
+        List<KorisnikDto> listaKorisnikDto = new ArrayList<>();
+
+        for (Korisnik korisnik : listaKorisnika) {
+            if (korisnik.getUloga() == Uloga.TRENER && korisnik.isAktivan() == false) {
+                KorisnikDto korisnikDto = new KorisnikDto(
+                        korisnik.getId(),
+                        korisnik.getKorisnickoIme(),
+                        korisnik.getPrezime(),
+                        korisnik.getLozinka(),
+                        korisnik.getIme(),
+                        korisnik.getKontakt(),
+                        korisnik.getEmail(),
+                        korisnik.getDatum(),
+                        korisnik.getUloga(),
+                        korisnik.isAktivan()
+                );
+
+                listaKorisnikDto.add(korisnikDto);
+            }
         }
 
-        @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-        public ResponseEntity<KorisnikDto> login(@RequestBody prijavaDto k1){
-            Korisnik korisnik = korisnikService.prijava(k1);
-            if(korisnik==null){
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
+        return new ResponseEntity<>(listaKorisnikDto, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/korisnici", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<KorisnikDto>> getAllKorisnik() {
+        List<Korisnik> listaKorisnika = korisnikService.findAll();
+        List<KorisnikDto> listaKorisnikDto = new ArrayList<>();
+
+        for (Korisnik korisnik : listaKorisnika) {
             KorisnikDto korisnikDto = new KorisnikDto(
                     korisnik.getId(),
                     korisnik.getKorisnickoIme(),
@@ -75,67 +124,19 @@ public class KorisnikController {
                     korisnik.getUloga(),
                     korisnik.isAktivan()
             );
-            return new ResponseEntity<>(korisnikDto, HttpStatus.CREATED);
+
+            listaKorisnikDto.add(korisnikDto);
         }
-
-    @GetMapping(value ="/treneri", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<KorisnikDto>> getAllTrener(){
-        List<Korisnik> listaKorisnika = korisnikService.findAll();
-        List<KorisnikDto> listaKorisnikDto = new ArrayList<>();
-
-        for(Korisnik korisnik: listaKorisnika){
-            if (korisnik.getUloga() == Uloga.TRENER) {
-                KorisnikDto korisnikDto = new KorisnikDto(
-                        korisnik.getId(),
-                        korisnik.getKorisnickoIme(),
-                        korisnik.getPrezime(),
-                        korisnik.getLozinka(),
-                        korisnik.getIme(),
-                        korisnik.getKontakt(),
-                        korisnik.getEmail(),
-                        korisnik.getDatum(),
-                        korisnik.getUloga(),
-                        korisnik.isAktivan()
-                );
-
-                listaKorisnikDto.add(korisnikDto);
-            }
-        }
-
-        return new ResponseEntity<>(listaKorisnikDto, HttpStatus.OK);
-    }
-
-    @GetMapping(value ="/korisnici", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<KorisnikDto>> getAllKorisnik(){
-        List<Korisnik> listaKorisnika = korisnikService.findAll();
-        List<KorisnikDto> listaKorisnikDto = new ArrayList<>();
-
-        for(Korisnik korisnik: listaKorisnika){
-                KorisnikDto korisnikDto = new KorisnikDto(
-                        korisnik.getId(),
-                        korisnik.getKorisnickoIme(),
-                        korisnik.getPrezime(),
-                        korisnik.getLozinka(),
-                        korisnik.getIme(),
-                        korisnik.getKontakt(),
-                        korisnik.getEmail(),
-                        korisnik.getDatum(),
-                        korisnik.getUloga(),
-                        korisnik.isAktivan()
-                );
-
-                listaKorisnikDto.add(korisnikDto);
-            }
 
 
         return new ResponseEntity<>(listaKorisnikDto, HttpStatus.OK);
     }
 
     //UPDATE NE RADI, radi ipak
-    @PutMapping(value="/updateKorisnik/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<KorisnikDto> putKorisnik(@PathVariable Long id, @Validated @RequestBody KorisnikDto k1){
+    @PutMapping(value = "/updateKorisnik/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<KorisnikDto> putKorisnik(@PathVariable Long id, @Validated @RequestBody KorisnikDto k1) {
         Optional<Korisnik> k2 = korisnikService.findOne(id);
-        if(!k2.isPresent()){
+        if (!k2.isPresent()) {
 
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -156,8 +157,8 @@ public class KorisnikController {
         return new ResponseEntity<>(k1, HttpStatus.ACCEPTED);
     }
 
-    @PostMapping(value ="/addKorisnik", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<KorisnikDto> postFitnesCentar(@Validated @RequestBody KorisnikDto k1){
+    @PostMapping(value = "/addKorisnik", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<KorisnikDto> postFitnesCentar(@Validated @RequestBody KorisnikDto k1) {
 
         Korisnik korisnik = new Korisnik(
                 null,
@@ -177,8 +178,8 @@ public class KorisnikController {
         return new ResponseEntity<>(k1, HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value="/deleteKorisnik/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity deleteKorisnik(@PathVariable Long id){
+    @DeleteMapping(value = "/deleteKorisnik/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity deleteKorisnik(@PathVariable Long id) {
         korisnikService.delete(id);
         return new ResponseEntity(HttpStatus.ACCEPTED);
     }
@@ -198,6 +199,18 @@ public class KorisnikController {
         );
         return new ResponseEntity<>(ocijenaDto, HttpStatus.OK);
     }*/
-}
 
+    @PutMapping(value = "/odobriTrenera", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> odobriTrenera(@RequestBody List<Long> ids) {
+        System.out.println(ids.toString());
+        for(Long id: ids){
+            Optional<Korisnik> k = korisnikService.findOne(id);
+            if(k.isPresent()){
+                k.get().setAktivan(true);
+                korisnikService.updateKorisnik(k.get());
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+}
 // IMA JOS DA SE PISE

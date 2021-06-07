@@ -40,7 +40,7 @@ public class KorisnikService {
             k1.setAktivan(true);
         }
         else if(k1.getUloga() == Uloga.TRENER){
-            k1.getAktivan(false);
+            k1.setAktivan(false);
         }
         Korisnik korisnik = new Korisnik(
                 k1.getId(),
@@ -59,7 +59,7 @@ public class KorisnikService {
     }
     public Korisnik prijava(prijavaDto prijava){
         Korisnik korisnik = korisnikRepository.findKorisnikByKorisnickoIme(prijava.getKorisnickoIme());
-        if(korisnik==null || !korisnik.getLozinka().equals(prijava.getLozinka())){
+        if(korisnik==null || !korisnik.getLozinka().equals(prijava.getLozinka()) || korisnik.isAktivan()==false){
             return null;
         }
         return korisnik;

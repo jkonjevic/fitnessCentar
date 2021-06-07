@@ -9,7 +9,7 @@ $(document).on("submit", "#registracija", function (event) {
     let lozinka = $("#lozinka").val();
     let kontakt = $("#kontakt").val();
     let datum = $("#datum").val();
-    let uloga = $("#uloga").is(":checked")?"TRENER":"CLAN"; // NE RADI se tako
+    let uloga = $("#uloga").is(":checked")?"TRENER":"CLAN";
 
 
     let newEmployee = {
