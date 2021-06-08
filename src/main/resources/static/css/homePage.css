@@ -46,5 +46,20 @@ img {
     background-color: lightgray;
 }
 
+#dugmeLogin{
+    position: fixed;
+    right: 10px;
+    top: 0px;
+    color: rebeccapurple;
+}
+
+#dugmeLogin:hover{
+    background-color: rebeccapurple;
+    color: black;
+    font-weight: bold;
+}
+
+
+
 
 

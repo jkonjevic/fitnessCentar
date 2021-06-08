@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>SVI TERMINI</h1>
-<h2>Prikazani su svi dostupni Termini</h2>
+
 <table class="table" id="korisnici">
     <thead>
     <tr>
@@ -20,8 +20,8 @@
         <th scope="col" id="naziv">Naziv Treninga</th>
         <th scope="col" id = "pocetak">Pocetak Termina</th>
         <th scope="col" id="tip">Tip Treninga</th>
-        <th scope="col" id="cijena">Cijena Treninga</th>
-        <th scope="col" id="oznaka">Oznaka Sale</th>
+        <th scope="col" id="cijena">Cijena Treninga(EUR)</th>
+        <th scope="col" id="oznaka">Oznaka Sale(redni broj)</th>
 
 
 
@@ -38,23 +38,29 @@
     <br>
     <input id="opisField" type="text" name="opis" placeholder="Pretrazi po opisu" />
     <br><br>
-    <label for="cijenaOdField" style="color: white; font-size: small;">Cijena od:</label>
+    <label for="cijenaOdField" style="color: white; font-size: small;">Cijena do:</label>
     <input id="cijenaOdField" type="number" name="cijenaOd"  />
-    <br>
-    <label for="cijenaDoField"  style="color: white; font-size: small;">Cijena do:</label>
-    <input id="cijenaDoField" type="number" name="cijenaDo"  />
     <br><br>
     <label for="datumOdField" style="color: white; font-size: small;">Datum od:</label>
-    <input id="datumOdField" type="datetime-local" name="datumOd" />
+    <input id="datumOdField" type="date" name="datumOd" />
     <br>
-    <label for="datumDoField" style="color: white; font-size: small;">Datum do:</label>
-    <input id="datumDoField" type="datetime-local" name="datumDo" />
     <br>
     <button class="trazi" id="trazi">Trazi</button>
 </form>
 
-<button type="button", id="button1">Sort| Cijena</button>
-<button type="button" , id="button2">Sort| Vrijeme</button>
+<label for="sort" id ="tekstVrijeme">Sortirajte (Vrijeme):</label>
+<select name="sortiranje" id="sort">
+    <option value="opadajuceVrijeme">Opadajuce</option>
+    <option value="rastuceVrijeme">Rastuce</option>
+</select>
+
+<label for="sort2" id="tekstCijena">Sortirajte (Cijena):</label>
+<select name="sortiranje2" id="sort2">
+    <option value="opadajuceCijena">Opadajuce</option>
+    <option value="rastuceCijena">Rastuce</option>
+
+</select>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 </body>
 </html></title>

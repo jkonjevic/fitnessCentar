@@ -4,7 +4,6 @@ $(document).on("submit", "#login", function (event) {
     let lozinka = $("#passwordField").val();
 
 
-
     let newLogin = {
         korisnickoIme,
         lozinka
@@ -20,7 +19,7 @@ $(document).on("submit", "#login", function (event) {
             window.location.href = "homePage.html";
         },
         error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva
-            alert("Greška prilikom dodavanja zaposlenog!");
+            alert("Greška prilikom Logovanja!");
         }
     });
 
