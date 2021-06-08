@@ -149,7 +149,7 @@ public class TerminController {
     }
 
 
-    @GetMapping(value="/opadajuceVrijeme", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value="/rastuceVrijeme", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TerminDto>> sortVrijeme(){
         List<Termin> t1 = terminService.sortVrijeme();
         List<TerminDto> listaTerminaDto = new ArrayList<>();

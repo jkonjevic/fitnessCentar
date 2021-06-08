@@ -180,10 +180,10 @@ $(document).ready(function () {
 
         }
 
-        if($('#cijenaOdField').val()!=""){
+        if($('#sort').val()!=""){
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/api/termini/pretraga?cijena="+$('#cijenaOdField').val(),
+                url: "http://localhost:8080/api/termini/pretraga?cijena="+$('#sort').val(),
                 dataType: "json",
                 success: function (response) {
                     console.log("SUCCESS:\n", response);
