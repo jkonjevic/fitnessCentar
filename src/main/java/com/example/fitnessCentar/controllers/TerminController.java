@@ -39,7 +39,8 @@ public class TerminController {
             termin.getCijena(),
             termin.getSala().getOznaka(),
             termin.getTrening().getTip(),
-            termin.getTrening().getNaziv()
+            termin.getTrening().getNaziv(),
+            termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }
@@ -59,7 +60,8 @@ public class TerminController {
                     termin.getCijena(),
                     termin.getSala().getOznaka(),
                     termin.getTrening().getTip(),
-                    termin.getTrening().getNaziv()
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }
@@ -80,7 +82,8 @@ public class TerminController {
                     termin.getCijena(),
                     termin.getSala().getOznaka(),
                     termin.getTrening().getTip(),
-                    termin.getTrening().getNaziv()
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }
@@ -100,7 +103,8 @@ public class TerminController {
                     termin.getCijena(),
                     termin.getSala().getOznaka(),
                     termin.getTrening().getTip(),
-                    termin.getTrening().getNaziv()
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }
@@ -120,7 +124,8 @@ public class TerminController {
                     termin.getCijena(),
                     termin.getSala().getOznaka(),
                     termin.getTrening().getTip(),
-                    termin.getTrening().getNaziv()
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }
@@ -140,7 +145,8 @@ public class TerminController {
                     termin.getCijena(),
                     termin.getSala().getOznaka(),
                     termin.getTrening().getTip(),
-                    termin.getTrening().getNaziv()
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }
@@ -160,7 +166,8 @@ public class TerminController {
                     termin.getCijena(),
                     termin.getSala().getOznaka(),
                     termin.getTrening().getTip(),
-                    termin.getTrening().getNaziv()
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }
@@ -179,7 +186,8 @@ public class TerminController {
                     termin.getCijena(),
                     termin.getSala().getOznaka(),
                     termin.getTrening().getTip(),
-                    termin.getTrening().getNaziv()
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }
@@ -199,7 +207,8 @@ public class TerminController {
                     termin.getCijena(),
                     termin.getSala().getOznaka(),
                     termin.getTrening().getTip(),
-                    termin.getTrening().getNaziv()
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }
@@ -218,7 +227,8 @@ public class TerminController {
                     termin.getCijena(),
                     termin.getSala().getOznaka(),
                     termin.getTrening().getTip(),
-                    termin.getTrening().getNaziv()
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }
@@ -238,7 +248,8 @@ public class TerminController {
                     termin.getCijena(),
                     termin.getSala().getOznaka(),
                     termin.getTrening().getTip(),
-                    termin.getTrening().getNaziv()
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
             );
             listaTerminaDto.add(terminDto);
         }

@@ -15,6 +15,15 @@ public class TerminDto {
     private int oznaka;
     private tipTreninga tip;
     private String naziv;
+    private String opis;
+
+    public String getOpis() {
+        return opis;
+    }
+
+    public void setOpis(String opis) {
+        this.opis = opis;
+    }
 
     public Long getId() {
         return id;
@@ -65,7 +74,7 @@ public class TerminDto {
         this.naziv = naziv;
     }
 
-    public TerminDto(Long id, Date pocetak, double cijena, int oznaka, tipTreninga tip, String naziv) {
+    public TerminDto(Long id, Date pocetak, double cijena, int oznaka, tipTreninga tip, String naziv, String opis) {
         this.id = id;
         this.pocetak = pocetak;
         this.cijena = cijena;
@@ -73,6 +82,7 @@ public class TerminDto {
         this.oznaka = oznaka;
         this.tip = tip;
         this.naziv = naziv;
+        this.opis = opis;
     }
 
     public TerminDto(){}

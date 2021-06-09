@@ -15,6 +15,7 @@ $(document).ready(function () {
                 row += "<td>" + termin.tip + "</td>";
                 row += "<td>" + termin.cijena + "</td>";
                 row += "<td>" + termin.oznaka + "</td>";
+                row += "<td>" + termin.opis + "</td>";
                 row += "</tr>";
 
                 $('#korisnici tbody').append(row);
@@ -54,6 +55,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.tip + "</td>";
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
+                        row += "<td>" + termin.opis + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -82,6 +84,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.tip + "</td>";
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
+                        row += "<td>" + termin.opis + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -111,6 +114,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.tip + "</td>";
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
+                        row += "<td>" + termin.opis + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -139,6 +143,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.tip + "</td>";
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
+                        row += "<td>" + termin.opis + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -168,6 +173,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.tip + "</td>";
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
+                        row += "<td>" + termin.opis + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -197,6 +203,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.tip + "</td>";
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
+                        row += "<td>" + termin.opis + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -226,6 +233,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.tip + "</td>";
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
+                        row += "<td>" + termin.opis + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -241,7 +249,7 @@ $(document).ready(function () {
             alert("DOZVOLJEN SAMO 1 SORT");
 
         }
-        if($('#sort').val()=="none" && $('#sort2').val()=="none" && ('#nazivField').val()=="" && $('#tipField').val()=="" && $('#opisField').val()=="" && $('#cijenaOdField').val()=="" && $('#datumOdField').val()==""){
+        if($('#sort').val()=="none" && $('#sort2').val()=="none" && $('#nazivField').val()=="" && $('#tipField').val()=="" && $('#opisField').val()=="" && $('#cijenaOdField').val()=="" && $('#datumOdField').val()==""){
             $.ajax({
                 type: "GET",
                 url: "http://localhost:8080/api/termini",
@@ -258,6 +266,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.tip + "</td>";
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
+                        row += "<td>" + termin.opis + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);

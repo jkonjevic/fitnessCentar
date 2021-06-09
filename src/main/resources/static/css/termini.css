@@ -96,7 +96,7 @@ tbody {
     outline: none;
 }
 
-#nazivField,#cijenaOdField,#cijenaDoField,#datumOdField,#datumDoField, #sort, #sort2{
+#nazivField,#cijenaOdField,#cijenaDoField,#datumOdField,#datumDoField, #sort, #sort2, #opisField{
     background-color: lightsteelblue;
     color: white;
     font-family: sans-serif;
