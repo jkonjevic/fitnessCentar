@@ -16,6 +16,8 @@ $(document).on("submit", "#login", function (event) {
         contentType: "application/json",
         data: JSON.stringify(newLogin),
         success: function (response) {
+            window.localStorage.setItem("ID", response.id);
+            window.localStorage.setItem("ULOGA", response.uloga);
             window.location.href = "homePage.html";
         },
         error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva
