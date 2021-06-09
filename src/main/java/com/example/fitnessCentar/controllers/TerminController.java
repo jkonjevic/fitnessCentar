@@ -226,6 +226,26 @@ public class TerminController {
         return new ResponseEntity<>(listaTerminaDto, HttpStatus.OK);
     }
 
+    @GetMapping( value="/none", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TerminDto>> getAllTerminiNone(){
+        List<Termin> listaTermina = terminService.findAll();
+        List<TerminDto> listaTerminaDto = new ArrayList<>();
+
+        for(Termin termin: listaTermina){
+            TerminDto terminDto = new TerminDto(
+                    termin.getId(),
+                    termin.getPocetak(),
+                    termin.getCijena(),
+                    termin.getSala().getOznaka(),
+                    termin.getTrening().getTip(),
+                    termin.getTrening().getNaziv()
+            );
+            listaTerminaDto.add(terminDto);
+        }
+
+        return new ResponseEntity<>(listaTerminaDto, HttpStatus.OK);
+    }
+
 
 
 }

@@ -151,7 +151,7 @@ $(document).ready(function () {
 
         }
 
-        if($('#cijenaOdField').val()!=""){
+         if($('#cijenaOdField').val()!=""){
             $.ajax({
                 type: "GET",
                 url: "http://localhost:8080/api/termini/pretraga?cijena="+$('#cijenaOdField').val(),
@@ -180,10 +180,71 @@ $(document).ready(function () {
 
         }
 
-        if($('#sort').val()!=""){
+        if($('#sort').val()!="none" && $('#sort2').val()=="none"){
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/api/termini/pretraga?cijena="+$('#sort').val(),
+                url: "http://localhost:8080/api/termini/"+$('#sort').val(),
+                dataType: "json",
+                success: function (response) {
+                    console.log("SUCCESS:\n", response);
+                    console.log(response);
+                    $('#korisnici tbody').html("");
+                    for (let termin of response) {
+                        let row = "<tr>";
+                        row += "<td>" + termin.id + "</td>";
+                        row += "<td>" + termin.naziv + "</td>";
+                        row += "<td>" + new Date( termin.pocetak).toLocaleString() + "</td>";
+                        row += "<td>" + termin.tip + "</td>";
+                        row += "<td>" + termin.cijena + "</td>";
+                        row += "<td>" + termin.oznaka + "</td>";
+                        row += "</tr>";
+
+                        $('#korisnici tbody').append(row);
+                    }
+                },
+                error: function (response) {
+                    console.log("ERROR:\n", response);
+                }
+            });
+
+        }
+
+        if($('#sort').val()=="none" && $('#sort2').val()!="none"){
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/api/termini/"+$('#sort2').val(),
+                dataType: "json",
+                success: function (response) {
+                    console.log("SUCCESS:\n", response);
+                    console.log(response);
+                    $('#korisnici tbody').html("");
+                    for (let termin of response) {
+                        let row = "<tr>";
+                        row += "<td>" + termin.id + "</td>";
+                        row += "<td>" + termin.naziv + "</td>";
+                        row += "<td>" + new Date( termin.pocetak).toLocaleString() + "</td>";
+                        row += "<td>" + termin.tip + "</td>";
+                        row += "<td>" + termin.cijena + "</td>";
+                        row += "<td>" + termin.oznaka + "</td>";
+                        row += "</tr>";
+
+                        $('#korisnici tbody').append(row);
+                    }
+                },
+                error: function (response) {
+                    console.log("ERROR:\n", response);
+                }
+            });
+
+        }
+        if($('#sort').val()!="none" && $('#sort2').val()!="none"){
+            alert("DOZVOLJEN SAMO 1 SORT");
+
+        }
+        if($('#sort').val()=="none" && $('#sort2').val()=="none" && ('#nazivField').val()=="" && $('#tipField').val()=="" && $('#opisField').val()=="" && $('#cijenaOdField').val()=="" && $('#datumOdField').val()==""){
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/api/termini",
                 dataType: "json",
                 success: function (response) {
                     console.log("SUCCESS:\n", response);
