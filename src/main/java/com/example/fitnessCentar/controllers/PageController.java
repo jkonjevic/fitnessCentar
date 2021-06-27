@@ -53,5 +53,15 @@ public class PageController {
     public String adminPage(){
         return "adminHomePage.html";
     }
+
+    @GetMapping(value="/updateFitnesCentar")
+    public String updateFitnesCentar(){
+        return "updateFitnesCentar.html";
+    }
+
+    @GetMapping(value="/deleteFitnesCentar")
+    public String deleteFitnesCentar(){
+        return "deleteFitnesCentar.html";
+    }
     
 }

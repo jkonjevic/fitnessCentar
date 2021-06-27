@@ -91,7 +91,7 @@ public class FitnesCentarController {
         return new ResponseEntity<>(f1, HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value="/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteFitnesCentar(@PathVariable Long id){
         fitnesCentarService.delete(id);
         return new ResponseEntity(HttpStatus.ACCEPTED);
