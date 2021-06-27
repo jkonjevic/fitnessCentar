@@ -48,5 +48,10 @@ public class PageController {
     public String sviTermini(){
         return "sviTermini.html";
     }
+
+    @GetMapping(value="/adminHomePage")
+    public String adminPage(){
+        return "adminHomePage.html";
+    }
     
 }
