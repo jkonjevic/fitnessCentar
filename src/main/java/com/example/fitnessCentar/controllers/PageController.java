@@ -63,5 +63,16 @@ public class PageController {
     public String deleteFitnesCentar(){
         return "deleteFitnesCentar.html";
     }
+
+    @GetMapping(value="/addTrener")
+    public String addTrener(){
+        return "addTrener.html";
+    }
+
+
+    @GetMapping(value="/deleteKorisnik")
+    public String deleteKorisnik(){
+        return "deleteKorisnik.html";
+    }
     
 }

@@ -2,6 +2,7 @@ package com.example.fitnessCentar.services;
 import com.example.fitnessCentar.entities.Korisnik;
 import com.example.fitnessCentar.entities.Uloga;
 import com.example.fitnessCentar.entities.dto.KorisnikDto;
+import com.example.fitnessCentar.entities.dto.TrenerDto;
 import com.example.fitnessCentar.entities.dto.prijavaDto;
 import com.example.fitnessCentar.repositories.KorisnikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,23 @@ public class KorisnikService {
         else if(k1.getUloga() == Uloga.TRENER){
             k1.setAktivan(false);
         }
+        Korisnik korisnik = new Korisnik(
+                k1.getId(),
+                k1.getKorisnickoIme(),
+                k1.getPrezime(),
+                k1.getLozinka(),
+                k1.getIme(),
+                k1.getKontakt(),
+                k1.getEmail(),
+                k1.getDatum(),
+                k1.getUloga(),
+                k1.isAktivan()
+        );
+        korisnikRepository.save(korisnik);
+        return korisnik;
+    }
+
+    public Korisnik coachRegistracija(KorisnikDto k1){
         Korisnik korisnik = new Korisnik(
                 k1.getId(),
                 k1.getKorisnickoIme(),

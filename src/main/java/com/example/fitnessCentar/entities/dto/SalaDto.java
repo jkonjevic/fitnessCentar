@@ -12,6 +12,15 @@ public class SalaDto {
     private Long id;
     private Integer kapacitet;
     private Integer oznaka;
+    private FitnesCentarDto fitnesCentarDto;
+
+    public FitnesCentarDto getFitnesCentarDto() {
+        return fitnesCentarDto;
+    }
+
+    public void setFitnesCentarDto(FitnesCentarDto fitnesCentarDto) {
+        this.fitnesCentarDto = fitnesCentarDto;
+    }
 
     public Long getId() {
         return id;

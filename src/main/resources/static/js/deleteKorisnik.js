@@ -12,15 +12,15 @@ $(document).on("submit", "#registracija", function (event) {
 
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/fitnesCentar/delete/"+id,
+        url: "http://localhost:8080/api/deleteKorisnik/"+id,
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify(newFitnesCentar),
         success: function (response) {
             console.log(response);
 
-            alert("FitnesCentar" + response.id + " je uspešno obrisan!");
-            window.location.href = "sviFitnesCentri.html";
+            alert("Korisnik" + response.id + " je uspešno obrisan!");
+            window.location.href = "adminHomePage.html";
         },
         error: function () {
             window.location.href = "adminHomePage.html";

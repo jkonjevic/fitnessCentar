@@ -3,10 +3,7 @@ package com.example.fitnessCentar.controllers;
 import com.example.fitnessCentar.entities.FitnesCentar;
 import com.example.fitnessCentar.entities.Korisnik;
 import com.example.fitnessCentar.entities.Uloga;
-import com.example.fitnessCentar.entities.dto.FitnesCentarDto;
-import com.example.fitnessCentar.entities.dto.KorisnikDto;
-import com.example.fitnessCentar.entities.dto.OcijenaDto;
-import com.example.fitnessCentar.entities.dto.prijavaDto;
+import com.example.fitnessCentar.entities.dto.*;
 import com.example.fitnessCentar.services.FitnesCentarService;
 import com.example.fitnessCentar.services.KorisnikService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +52,14 @@ public class KorisnikController {
     public ResponseEntity<KorisnikDto> registration(@RequestBody KorisnikDto k1) {
         Korisnik korisnik = korisnikService.registracija(k1);
         k1.setId(korisnik.getId());
+        return new ResponseEntity<>(k1, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/coachregistration", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<KorisnikDto> coachRegistration(@RequestBody KorisnikDto k1) {
+        Korisnik korisnik = korisnikService.coachRegistracija(k1);
+        k1.setId(korisnik.getId());
+        k1.setAktivan(true);
         return new ResponseEntity<>(k1, HttpStatus.CREATED);
     }
 

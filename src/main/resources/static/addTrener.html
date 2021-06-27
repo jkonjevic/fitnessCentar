@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Add Trener</title>
+  <link rel="stylesheet" type="text/css" href="css/registracija.css">
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/addTrener.js"></script>
+</head>
+<body>
+<div class = "registration-form" id = "registracija">
+  <h1>Dodaj Trenera</h1>
+  <form action="#" method="post">
+    <p>First Name: </p>
+    <input type="text" name="fname" placeholder="First name" id ="ime" required>
+    <p>Last Name: </p>
+    <input type="text" name="lname" placeholder="Last name" id="prezime" required>
+    <p>User Name: </p>
+    <input type="text" name="username" placeholder="User name" id="korisnickoIme" required>
+    <p>Email: </p>
+    <input type="email" name="email" placeholder="Email" id="email" required>
+    <p>Password: </p>
+    <input type="password" name="password" placeholder="password" id="lozinka" required>
+    <p>Phone Number: </p>
+    <input type="tel" name="phone" placeholder="Phone number" id="kontakt" required>
+    <p>Date of birth: </p>
+    <input type="date" name="birthdate" placeholder="Date of birth" id="datum" required>
+    <p>ID Fitnes Centra: </p>
+    <input type="number" name="idCentra" placeholder="ID fitnes centra kom pripada" id="idCentra" required>
+    <button type="submit" id="dugmeRegistruj">Dodaj</button>
+  </form>
+</div>
+</body>
+</html>
