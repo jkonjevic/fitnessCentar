@@ -41,13 +41,20 @@ public class Sala implements Serializable {
         this.oznaka = oznaka;
     }
 
+    public FitnesCentar getFitnesCentar() {
+        return fitnesCentar;
+    }
+
+    public void setFitnesCentar(FitnesCentar fitnesCentar) {
+        this.fitnesCentar = fitnesCentar;
+    }
 
 
-    public Sala(Long id, Integer kapacitet, Integer oznaka) {
+    public Sala(Long id, Integer kapacitet, Integer oznaka, FitnesCentar fitnesCentar) {
         this.id = id;
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
-;
+        this.fitnesCentar = fitnesCentar;
     }
 
     public Sala(){}

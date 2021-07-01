@@ -20,9 +20,12 @@ public class FitnesCentarService  {
     }
 
 
-    public Optional<FitnesCentar> findOne(Long id){
+   /* public Optional<FitnesCentar> findOne(Long id){
         return fitnesCentarRepository.findById(id);
-    }
+    } */
+    public Optional<FitnesCentar> findOne(Long id){ return fitnesCentarRepository.findById(id);}
+
+    public FitnesCentar findOneById(Long id){ return fitnesCentarRepository.findOneById(id);}
 
 
     public FitnesCentar addFitnesCentar(FitnesCentar f1){

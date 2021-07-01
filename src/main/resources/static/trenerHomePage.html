@@ -1,43 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:background-color="http://www.w3.org/1999/xhtml">
 <head>
-    <title>AdminHomePage</title>
+  <title>Fitnes Centar</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/homePage.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script>
-    if(window.localStorage.getItem("ULOGA")==null){
-        window.location.href="login.html";
-    }
-    else if(window.localStorage.getItem("ULOGA")!="ADMINISTRATOR"){
-      window.location.href="homePage.html";
-    }
-  </script>
 </head>
 <body>
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
+      <a class="navbar-brand" href="#">FitnesCentar</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active" id="okej"><a href="/deleteKorisnik">deleteKorisnik</a></li>
+      <li class="active" id="okej"><a href="/">Home</a></li>
       <li><a href="/sviTreninzi">Trening</a></li>
       <li><a href="/sviCentri">Centri</a></li>
       <li><a href="/sviTermini">Termini</a></li>
-      <li><a href="/addFitnesCentar">addCentar</a></li>
-      <li><a href="/updateFitnesCentar">UpdateCentar</a></li>
-      <li><a href="/deleteFitnesCentar">deleteCentar</a></li>
-      <li><a href="/coachingRequest">acceptCoach</a></li>
-      <li><a href="/addSala">addSala</a></li>
-      <li><a href="/updateSala">UpdateSala</a></li>
-      <li><a href="/deleteSala">deleteSala</a></li>
-      <li><a href="/addTrener">addCoach</a></li>
+      <li><a href="/addTermin">AddTermin</a></li>
+      <li><a href="/sviTermini">UpdateTermin</a></li>
       <li><a href="/login" id="dugmeLogin">Login</a></li>
-
     </ul>
   </div>
 </nav>
@@ -51,6 +37,5 @@
 <img src="images/homePage1.jpg" style="width:500px;height:400px;">
 <img src="images/HomePage2.jpg" style="width:500px;height:400px;">
 <img src="images/HomePage3.jpg" style="width:500px;height:400px;">
-
 </body>
 </html>

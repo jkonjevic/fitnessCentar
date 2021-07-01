@@ -12,15 +12,7 @@ public class SalaDto {
     private Long id;
     private Integer kapacitet;
     private Integer oznaka;
-    private FitnesCentarDto fitnesCentarDto;
-
-    public FitnesCentarDto getFitnesCentarDto() {
-        return fitnesCentarDto;
-    }
-
-    public void setFitnesCentarDto(FitnesCentarDto fitnesCentarDto) {
-        this.fitnesCentarDto = fitnesCentarDto;
-    }
+    private Long idCentra;
 
     public Long getId() {
         return id;
@@ -40,15 +32,24 @@ public class SalaDto {
         return oznaka;
     }
 
+    public Long getIdCentra() {
+        return idCentra;
+    }
+
+    public void setIdCentra(Long idCentra) {
+        this.idCentra = idCentra;
+    }
+
     public void setOznaka(Integer oznaka) {
         this.oznaka = oznaka;
     }
 
 
-    public SalaDto(Long id, Integer kapacitet, Integer oznaka) {
+    public SalaDto(Long id, Integer kapacitet, Integer oznaka, Long idCentra) {
         this.id = id;
         this.kapacitet = kapacitet;
         this.oznaka = oznaka;
+        this.idCentra = idCentra;
 
     }
 

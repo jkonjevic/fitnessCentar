@@ -11,6 +11,7 @@ $(document).on("submit", "#registracija", function (event) {
     let datum = $("#datum").val();
     let uloga = "TRENER";
     let aktivan = true;
+    let idFitnesCentra = $("#idCentra").val();
 
 
     let newEmployee = {
@@ -22,7 +23,8 @@ $(document).on("submit", "#registracija", function (event) {
         kontakt,
         datum,
         uloga,
-        aktivan: "true"
+        aktivan: "true",
+        idFitnesCentra
     }
 
 

@@ -16,6 +16,8 @@ public class KorisnikService {
 
     @Autowired
     private KorisnikRepository korisnikRepository;
+    @Autowired
+    private FitnesCentarService fitnesCentarService;
     public List<Korisnik> findAll() {
         return korisnikRepository.findAll();
     }
@@ -24,6 +26,8 @@ public class KorisnikService {
     public Optional<Korisnik> findOne(Long id){
         return korisnikRepository.findById(id);
     }
+
+    public Korisnik findOneById(Long id){return korisnikRepository.findOneById(id);}
 
 
     public Korisnik addKorisnik(Korisnik k1){
@@ -59,7 +63,7 @@ public class KorisnikService {
         return korisnik;
     }
 
-    public Korisnik coachRegistracija(KorisnikDto k1){
+    public Korisnik coachRegistracija(TrenerDto k1){
         Korisnik korisnik = new Korisnik(
                 k1.getId(),
                 k1.getKorisnickoIme(),
@@ -72,6 +76,7 @@ public class KorisnikService {
                 k1.getUloga(),
                 k1.isAktivan()
         );
+        korisnik.setFitnesCentar(fitnesCentarService.findOneById(k1.getIdFitnesCentra()));
         korisnikRepository.save(korisnik);
         return korisnik;
     }

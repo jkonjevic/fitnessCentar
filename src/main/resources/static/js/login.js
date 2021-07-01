@@ -18,6 +18,19 @@ $(document).on("submit", "#login", function (event) {
         success: function (response) {
             window.localStorage.setItem("ID", response.id);
             window.localStorage.setItem("ULOGA", response.uloga);
+            if(response.uloga=="CLAN"){
+                window.location.href = "homePage.html";
+                return;
+            }
+            if(response.uloga=="TRENER"){
+                window.location.href = "trenerHomePage.html";
+                return;
+            }
+            if(response.uloga=="ADMINISTRATOR"){
+                window.location.href = "adminHomePage.html";
+                return;
+            }
+
             window.location.href = "homePage.html";
         },
         error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva

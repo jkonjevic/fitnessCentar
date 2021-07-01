@@ -1,10 +1,11 @@
 package com.example.fitnessCentar.controllers;
 
-import com.example.fitnessCentar.entities.FitnesCentar;
-import com.example.fitnessCentar.entities.Termin;
+import com.example.fitnessCentar.entities.*;
 import com.example.fitnessCentar.entities.dto.FitnesCentarDto;
+import com.example.fitnessCentar.entities.dto.SalaDto;
 import com.example.fitnessCentar.entities.dto.TerminDto;
-import com.example.fitnessCentar.entities.tipTreninga;
+import com.example.fitnessCentar.entities.dto.TreningDto;
+import com.example.fitnessCentar.services.KorisnikService;
 import com.example.fitnessCentar.services.TerminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,10 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -26,6 +24,8 @@ public class TerminController {
 
     @Autowired
     private TerminService terminService;
+    @Autowired
+    private KorisnikService korisnikService;
 
     @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TerminDto>> getAllTermini(){
@@ -255,6 +255,22 @@ public class TerminController {
         }
 
         return new ResponseEntity<>(listaTerminaDto, HttpStatus.OK);
+    }
+    @GetMapping( value="/getAllSale/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Set<Sala>> getAllSalaCentar(@RequestParam Long id){   //id Trenera koji je ulogovan iz LocalStorage-a
+
+        Korisnik korisnik = new Korisnik();                                     //temp Korisnik
+        korisnik = korisnikService.findOneById(id);                             //Dobaviti Objekat Korisnik sa datim Id-jem Trenera
+        FitnesCentar fitnesCentar = new FitnesCentar();                         //temp FitnesCentar
+        fitnesCentar = korisnik.getFitnesCentar();                              //Dobaviti fitnesCentar kom pripada korisnik(trener)
+        Set<Sala> listaSala = new HashSet<>();                               //Temp Set Sala
+       listaSala = fitnesCentar.getListaSala();                              //dobaviti Set sala iz datog Fitnes Centra
+
+        for(Sala sala: listaSala)
+        {
+            System.out.println(sala.getOznaka());   //ispis
+        }
+        return new ResponseEntity<>(listaSala, HttpStatus.OK);              //Vracam dati Set Sala u ResponeEntity
     }
 
 

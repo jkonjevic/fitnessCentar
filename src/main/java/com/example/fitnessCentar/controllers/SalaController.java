@@ -4,6 +4,7 @@ import com.example.fitnessCentar.entities.FitnesCentar;
 import com.example.fitnessCentar.entities.Sala;
 import com.example.fitnessCentar.entities.dto.FitnesCentarDto;
 import com.example.fitnessCentar.entities.dto.SalaDto;
+import com.example.fitnessCentar.repositories.FitnesCentarRepository;
 import com.example.fitnessCentar.services.FitnesCentarService;
 import com.example.fitnessCentar.services.SalaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,21 @@ import java.util.Optional;
 public class SalaController {
     @Autowired
     private SalaService salaService;
+    @Autowired
+    private FitnesCentarService fitnesCentarService;
 
     @GetMapping(value ="/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<SalaDto>> getAllSala(){
         List<Sala> listaSala = salaService.findAll();
         List<SalaDto> listaSalaDto = new ArrayList<>();
+        FitnesCentar f1 = new FitnesCentar();
 
         for(Sala sala: listaSala){
             SalaDto salaDto = new SalaDto(
                     sala.getId(),
                     sala.getKapacitet(),
-                    sala.getOznaka()
+                    sala.getOznaka(),
+                    f1.getId()
             );
             listaSalaDto.add(salaDto);
         }
@@ -40,13 +45,14 @@ public class SalaController {
         return new ResponseEntity<>(listaSalaDto, HttpStatus.OK);
     }
 
-    @GetMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+ /*   @GetMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SalaDto> getSala(@PathVariable Long id){
         Optional<Sala> s1 = salaService.findOne(id);
         if(!s1.isPresent()){
 
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
         Sala sala = s1.get();
         SalaDto salaDto = new SalaDto(
                 sala.getId(),
@@ -54,33 +60,44 @@ public class SalaController {
                 sala.getOznaka()
         );
         return new ResponseEntity<>(salaDto, HttpStatus.OK);
-    }
+    }*/
 
-    @PostMapping(value="/addSala", produces = MediaType.APPLICATION_JSON_VALUE)
+     @PostMapping(value="/addSala", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SalaDto> postSala(@Validated @RequestBody SalaDto s1){
-
+         FitnesCentar centar = new FitnesCentar();
+         centar = fitnesCentarService.findOneById(s1.getIdCentra());
         Sala sala = new Sala(
                 null,
                 s1.getKapacitet(),
-                s1.getOznaka()
+                s1.getOznaka(),
+                centar
         );
         sala = salaService.addSala(sala);
         s1.setId(sala.getId());
         return new ResponseEntity<>(s1, HttpStatus.CREATED);
     }
 
-    @PutMapping(value="/updateSala/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+
+
+   @PutMapping(value="/updateSala/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SalaDto> putSala(@PathVariable Long id, @Validated @RequestBody SalaDto s1){
         Optional<Sala> s2 = salaService.findOne(id);
         if(!s2.isPresent()){
 
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+         FitnesCentar centar = new FitnesCentar();
+         centar = fitnesCentarService.findOneById(s1.getIdCentra());
+         System.out.println(centar.getNaziv());
         Sala sala = new Sala(
                 s2.get().getId(),
                 s1.getKapacitet(),
-                s1.getOznaka()
+                s1.getOznaka(),
+                centar
         );
+       System.out.println(sala.getId());
+       System.out.println(sala.getOznaka());
+       System.out.println(sala.getKapacitet());
         sala = salaService.updateSala(sala);
         s1.setId(id);
         return new ResponseEntity<>(s1, HttpStatus.ACCEPTED);
@@ -92,4 +109,4 @@ public class SalaController {
         return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
-}
+  }

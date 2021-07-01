@@ -24,6 +24,8 @@ public class KorisnikController {
 
     @Autowired
     private KorisnikService korisnikService;
+    @Autowired
+    private FitnesCentarService fitnesCentarService;
 
     @GetMapping(value = "/korisnici/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<KorisnikDto> getKorisnik(@PathVariable Long id) {
@@ -56,7 +58,7 @@ public class KorisnikController {
     }
 
     @PostMapping(value = "/coachregistration", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<KorisnikDto> coachRegistration(@RequestBody KorisnikDto k1) {
+    public ResponseEntity<TrenerDto> coachRegistration(@RequestBody TrenerDto k1) {
         Korisnik korisnik = korisnikService.coachRegistracija(k1);
         k1.setId(korisnik.getId());
         k1.setAktivan(true);

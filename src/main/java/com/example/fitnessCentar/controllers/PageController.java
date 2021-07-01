@@ -74,5 +74,31 @@ public class PageController {
     public String deleteKorisnik(){
         return "deleteKorisnik.html";
     }
+
+    @GetMapping(value="/addSala")
+    public String addSala(){
+        return "addSala.html";
+    }
+
+    @GetMapping(value="/updateSala")
+    public String updateSala(){
+        return "updateSala.html";
+    }
+
+    @GetMapping(value="/deleteSala")
+    public String deleteSala(){
+        return "deleteSala.html";
+    }
+
+    @GetMapping(value="/trenerHomePage")
+    public String trenerHomePage(){
+        return "trenerHomePage.html";
+    }
+
+
+    @GetMapping(value="/addTermin")
+    public String addTermin(){
+        return "addTermin.html";
+    }
     
 }
