@@ -16,6 +16,7 @@ $(document).ready(function () {
                 row += "<td>" + termin.cijena + "</td>";
                 row += "<td>" + termin.oznaka + "</td>";
                 row += "<td>" + termin.opis + "</td>";
+                row += "<td>" + "<button class='odaberi' id=" + termin.id + ">Odaberi</button>" + "</td>";
                 row += "</tr>";
 
                 $('#korisnici tbody').append(row);
@@ -56,6 +57,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
                         row += "<td>" + termin.opis + "</td>";
+                        row += "<td>" + "<button class='odaberi' id=" + termin.id + ">Odaberi</button>" + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -85,6 +87,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
                         row += "<td>" + termin.opis + "</td>";
+                        row += "<td>" + "<button class='odaberi' id=" + termin.id + ">Odaberi</button>" + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -115,6 +118,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
                         row += "<td>" + termin.opis + "</td>";
+                        row += "<td>" + "<button class='odaberi' id=" + termin.id + ">Odaberi</button>" + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -144,6 +148,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
                         row += "<td>" + termin.opis + "</td>";
+                        row += "<td>" + "<button class='odaberi' id=" + termin.id + ">Odaberi</button>" + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -155,6 +160,7 @@ $(document).ready(function () {
             });
 
         }
+
 
          if($('#cijenaOdField').val()!=""){
             $.ajax({
@@ -174,6 +180,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
                         row += "<td>" + termin.opis + "</td>";
+                        row += "<td>" + "<button class='odaberi' id=" + termin.id + ">Odaberi</button>" + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -204,6 +211,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
                         row += "<td>" + termin.opis + "</td>";
+                        row += "<td>" + "<button class='odaberi' id=" + termin.id + ">Odaberi</button>" + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -234,6 +242,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
                         row += "<td>" + termin.opis + "</td>";
+                        row += "<td>" + "<button class='odaberi' id=" + termin.id + ">Odaberi</button>" + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -267,6 +276,7 @@ $(document).ready(function () {
                         row += "<td>" + termin.cijena + "</td>";
                         row += "<td>" + termin.oznaka + "</td>";
                         row += "<td>" + termin.opis + "</td>";
+                        row += "<td>" + "<button class='odaberi' id=" + termin.id + ">Odaberi</button>" + "</td>";
                         row += "</tr>";
 
                         $('#korisnici tbody').append(row);
@@ -282,7 +292,11 @@ $(document).ready(function () {
 
 
     });
-
+    $(document).on('click', '.odaberi', function myFunction(event) {
+        event.preventDefault();
+        window.localStorage.setItem('termin', this.id);
+        window.location.href = "odabranTermin.html";
+    });
 });
 
 

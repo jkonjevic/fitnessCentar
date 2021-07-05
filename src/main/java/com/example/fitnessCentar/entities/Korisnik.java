@@ -144,7 +144,13 @@ public class Korisnik implements Serializable {
         this.fitnesCentar = fitnesCentar;
     }
 
+    public Set<Termin> getPrijave() {
+        return prijave;
+    }
 
+    public void setPrijave(Set<Termin> prijave) {
+        this.prijave = prijave;
+    }
 
     public String getPrezime() {
         return prezime;

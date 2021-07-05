@@ -59,6 +59,7 @@ tbody {
     font-weight: bold;
 }
 
+
 #button2 {
     display: inline-block;
     font-size: 18px;
@@ -171,4 +172,13 @@ tbody {
     bottom:185px;
     right: 70px;
     color: white;
+}
+.treninzi{
+    position: fixed;
+    bottom: 500px;
+    left: 400px;
+    right: 400px;
+}
+.odaberi {
+
 }

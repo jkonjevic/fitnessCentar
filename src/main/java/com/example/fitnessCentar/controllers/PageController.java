@@ -100,5 +100,26 @@ public class PageController {
     public String addTermin(){
         return "addTermin.html";
     }
+
+
+    @GetMapping(value="/mojiTermini")
+    public String korisnikTermin(){
+        return "korisnikTermin.html";
+    }
+
+    @GetMapping(value="/mojProfil")
+    public String mojProfil(){
+        return "prikazKorisnika.html";
+    }
+
+    @GetMapping(value="/mojiTreninzi")
+    public String mojiTreninzi(){
+        return "mojiTreninzi.html";
+    }
+
+    @GetMapping(value="/OcijenjeniTreninzi")
+    public String mojiOcijenjeniTreninzi(){
+        return "OcijenjeniTreninzi.html";
+    }
     
 }

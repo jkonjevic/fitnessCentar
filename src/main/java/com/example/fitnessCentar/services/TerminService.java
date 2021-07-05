@@ -85,5 +85,6 @@ public class TerminService {
         terminRepository.deleteById(id);
     }
 
+    public Termin findOneById(Long id) { return terminRepository.findOneById(id);}
 
 }

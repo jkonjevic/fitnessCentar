@@ -1,10 +1,7 @@
 package com.example.fitnessCentar.controllers;
 
 import com.example.fitnessCentar.entities.*;
-import com.example.fitnessCentar.entities.dto.FitnesCentarDto;
-import com.example.fitnessCentar.entities.dto.SalaDto;
-import com.example.fitnessCentar.entities.dto.TerminDto;
-import com.example.fitnessCentar.entities.dto.TreningDto;
+import com.example.fitnessCentar.entities.dto.*;
 import com.example.fitnessCentar.services.KorisnikService;
 import com.example.fitnessCentar.services.TerminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +44,56 @@ public class TerminController {
 
         return new ResponseEntity<>(listaTerminaDto, HttpStatus.OK);
     }
+
+    @GetMapping(value ="/korisnikTermini/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Set<TerminDto>> getKorisnikTermini(@PathVariable Long id){
+        Korisnik korisnik = korisnikService.findOneById(id);
+        System.out.println(korisnik.getIme());
+        Set<Termin> listaTermina = korisnik.getPrijave();
+        Set<TerminDto> listaTerminaDto = new HashSet<>();
+
+        for(Termin termin: listaTermina){
+            System.out.println(termin.getCijena());
+            TerminDto terminDto = new TerminDto(
+                    termin.getId(),
+                    termin.getPocetak(),
+                    termin.getCijena(),
+                    termin.getSala().getOznaka(),
+                    termin.getTrening().getTip(),
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis()
+            );
+            listaTerminaDto.add(terminDto);
+        }
+
+        return new ResponseEntity<>(listaTerminaDto, HttpStatus.OK);
+    }
+    @GetMapping(value = "/getAllOdabraniTermini/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<OdabranTerminDto> getAllOdabraniTermini(@PathVariable Long id){
+
+        Termin termin = terminService.findOneById(id);
+        if(termin==null){
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+            OdabranTerminDto odabranterminDto = new OdabranTerminDto(
+                    termin.getId(),
+                    termin.getPocetak(),
+                    termin.getCijena(),
+                    termin.getSala().getOznaka(),
+                    termin.getTrening().getTip(),
+                    termin.getTrening().getNaziv(),
+                    termin.getTrening().getOpis(),
+                    termin.getSala().getKapacitet()-termin.getBrPrijavljenih()
+            );
+
+
+
+        return new ResponseEntity<>(odabranterminDto,HttpStatus.OK);
+    }
+
+
+
 
     @GetMapping(value="/pretraga", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TerminDto>> getAllTerminDtoCijena(@RequestParam double cijena){
@@ -273,6 +320,107 @@ public class TerminController {
         return new ResponseEntity<>(listaSala, HttpStatus.OK);              //Vracam dati Set Sala u ResponeEntity
     }
 
+    @PostMapping(value = "/prijavaNaTrening/{idKorisnik}/{idTermin}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<OdabranTerminDto> prijaviTermin(@PathVariable Long idKorisnik, @PathVariable Long idTermin){
+        Korisnik korisnik = this.korisnikService.findOneById(idKorisnik);
+        Termin termin = this.terminService.findOneById(idTermin);
+        System.out.println(termin.getCijena());
+        System.out.println(korisnik.getIme());
+        if(korisnik == null || termin == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        korisnik.getPrijave().add(termin);
+        termin.setBrPrijavljenih(termin.getBrPrijavljenih() + 1);
+        this.korisnikService.addKorisnik(korisnik);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
+    @PutMapping(value = "/odjavaTrening/{idKorisnik}/{idTermin}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<OdabranTerminDto> odjavaTermin(@PathVariable Long idKorisnik, @PathVariable Long idTermin){
+        Korisnik korisnik = this.korisnikService.findOneById(idKorisnik);
+        Termin termin = this.terminService.findOneById(idTermin);
+        System.out.println(termin.getCijena());
+        System.out.println(korisnik.getIme());
+        if(korisnik == null || termin == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        korisnik.getPrijave().remove(termin);
+        termin.setBrPrijavljenih(termin.getBrPrijavljenih() - 1);
+        this.korisnikService.addKorisnik(korisnik);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value ="/korisnikNeocijenjeniTermini/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Set<TerminDto>> getKorisnikNeocijenjeniTermini(@PathVariable Long id){
+        Korisnik korisnik = korisnikService.findOneById(id);
+        System.out.println(korisnik.getPrezime());
+        Set<Termin> listaTermina = korisnik.getPrijave();
+        Set<TerminDto> listaTerminaDto = new HashSet<>();
+
+        for(Termin termin: listaTermina){
+            System.out.println(termin.getCijena());
+            boolean provjera = false;
+            Set<Ocijena> listaOcijena = termin.getOcijene();
+            for(Ocijena ocijena: listaOcijena){
+                if(ocijena.getKorisnik().getId()==id){
+                    provjera = true;
+                    break;
+                }
+            }
+            if(provjera == false){
+                Date currentDate = new Date();
+                if(currentDate.after(termin.getPocetak())){
+                    TerminDto terminDto = new TerminDto(
+                            termin.getId(),
+                            termin.getPocetak(),
+                            termin.getCijena(),
+                            termin.getSala().getOznaka(),
+                            termin.getTrening().getTip(),
+                            termin.getTrening().getNaziv(),
+                            termin.getTrening().getOpis()
+                    );
+                    listaTerminaDto.add(terminDto);
+                    break;
+                }
+            }
+
+        }
+
+        return new ResponseEntity<>(listaTerminaDto, HttpStatus.OK);
+    }
+
+    @GetMapping(value ="/korisnikOcijenjeniTermini/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Set<OdabranTerminDto>> getKorisnikOcijenjeniTermini(@PathVariable Long id){
+        Korisnik korisnik = korisnikService.findOneById(id);
+        System.out.println(korisnik.getIme());
+        Set<Termin> listaTermina = korisnik.getPrijave();
+        Set<OdabranTerminDto> listaTerminaDto = new HashSet<>();
+
+        for(Termin termin: listaTermina){
+            System.out.println(termin.getCijena());
+            Set<Ocijena> listaOcijena = termin.getOcijene();
+            for(Ocijena ocijena: listaOcijena){
+                if(ocijena.getKorisnik().getId()==id){
+                    Date currentDate = new Date();
+                    if(currentDate.after(termin.getPocetak())){
+                        OdabranTerminDto terminDto = new OdabranTerminDto(
+                                termin.getId(),
+                                termin.getPocetak(),
+                                termin.getCijena(),
+                                termin.getSala().getOznaka(),
+                                termin.getTrening().getTip(),
+                                termin.getTrening().getNaziv(),
+                                termin.getTrening().getOpis(),
+                                ocijena.getOcijena()
+                        );
+                        listaTerminaDto.add(terminDto);
+                        break;
+                    }
+                }
+            }
+
+
+        }
+
+        return new ResponseEntity<>(listaTerminaDto, HttpStatus.OK);
+    }
 
 }

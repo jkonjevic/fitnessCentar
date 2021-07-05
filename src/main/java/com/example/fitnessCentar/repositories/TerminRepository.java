@@ -37,6 +37,8 @@ public interface TerminRepository extends JpaRepository<Termin, Long> {
 
     List<Termin> findAllByPocetakGreaterThan(Date Pocetak);
 
+    Termin findOneById(Long id);
+
 
 
 
