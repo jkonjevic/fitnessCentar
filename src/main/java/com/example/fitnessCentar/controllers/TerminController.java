@@ -387,7 +387,7 @@ public class TerminController {
         return new ResponseEntity<>(listaTerminaDto, HttpStatus.OK);
     }
 
-    @GetMapping(value ="/korisnikOcijenjeniTermini/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value ="/korisnikOcijenjeniTermini/{id}", produces = MediaType.APPLICATION_JSON_VALUE)  //OCIJENJENI TERMINI logika
     public ResponseEntity<Set<OdabranTerminDto>> getKorisnikOcijenjeniTermini(@PathVariable Long id){
         Korisnik korisnik = korisnikService.findOneById(id);
         System.out.println(korisnik.getIme());
@@ -400,7 +400,7 @@ public class TerminController {
             for(Ocijena ocijena: listaOcijena){
                 if(ocijena.getKorisnik().getId()==id){
                     Date currentDate = new Date();
-                    if(currentDate.after(termin.getPocetak())){
+                    if(currentDate.after(termin.getPocetak())){                                 //provjera datum
                         OdabranTerminDto terminDto = new OdabranTerminDto(
                                 termin.getId(),
                                 termin.getPocetak(),

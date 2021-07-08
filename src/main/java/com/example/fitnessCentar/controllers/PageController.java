@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
+    //postavljanje poziva za localhost
     @GetMapping()
     public String home(){
         return "homePage.html";

@@ -39,7 +39,7 @@ public class KorisnikService {
 
     public void delete(Long id){
         korisnikRepository.deleteById(id);
-    }
+    }   //logika za registraciju
     public Korisnik registracija(KorisnikDto k1){
         if(k1.getUloga()==Uloga.CLAN){
             k1.setAktivan(true);
