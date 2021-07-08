@@ -37,11 +37,11 @@ $(document).on('click', '.odjavi', function myFunction(event) {
         data: JSON.stringify(),
         success: function (response) {
             console.log(response);
-            alert("PROSLO SVE OK");
+            alert("OK");
         },
         error: function(response) {
             console.log("NEUSPJESNO: \n", response);
-            alert("PROSLO SVE KAKO TREBA");
+            alert("OK");
         }
     });
     window.location.href = "korisnikTermin.html";

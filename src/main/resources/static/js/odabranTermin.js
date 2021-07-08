@@ -30,7 +30,7 @@ $(document).ready(function () {
 $(document).on('click', '.prijavi', function myFunction(event) {
     event.preventDefault();
     if(kap <= 0){
-        alert("NEMA MJESTA GLUPANDERU");
+        alert("SVA MJESTA SU ZAUZETA");
         window.location.href = "sviTermini.html";
     }
     else {
@@ -47,7 +47,7 @@ $(document).on('click', '.prijavi', function myFunction(event) {
                 },
             error: function(response) {
                 console.log("NEUSPJESNO: \n", response);
-                alert("PROSLO SVE KAKO TREBA");
+                alert("OK");
             }
         });
         window.location.href = "korisnikTermin.html";
